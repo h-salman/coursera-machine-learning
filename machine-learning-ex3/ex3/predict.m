@@ -22,10 +22,17 @@ p = zeros(size(X, 1), 1);
 %
 
 
+X = [ones(m,1), X]; %append column of 1s to X
 
+a1 = sigmoid(X*Theta1'); %calculate output of 1st hidden layer
 
+a1 = [ones(size(a1,1),1), a1]; %append column of 1s to a1
 
+a2 = sigmoid(a1*Theta2'); %calculate output of final layer
 
+[pred, pred_i] = max(a2,[],2); % calculate highest probability and index of highest probability out of the 10 classes
+
+p = pred_i; %set p equal to the index of the highest probability. this is the desired class
 
 
 

@@ -30,10 +30,19 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+%Mutliply all_theta with X to get the hypothesis
+h = X*all_theta';
+%take sigmoid of the hypothesis to get the prediction probability
+h_sig = sigmoid(h); % predictions
 
+%Now we have h as a matrix of predictions for each example for all 10 classes...
+% however, we need the index of the class that got the highest probability
 
+[pred, pred_i] = max(h_sig, [], 2);
 
-
+%pred_i contains the indices of the maximum value, i.e the value we want to predict
+%set p equal to this value
+p = pred_i;
 
 
 % =========================================================================
